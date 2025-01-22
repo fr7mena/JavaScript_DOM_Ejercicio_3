@@ -16,6 +16,15 @@ function recorrerAdelante(e) {
 
     let texto = "Has elegido " + textoDelH2 +  " que está situada en el " + divPadreId;
 
-    console.log(texto);
+    texto = recorrerHermanos(header, texto);
 
+    console.log(texto);
+}
+
+function recorrerHermanos(header, texto) {
+    const hermano = header.nextElementSibling; //Con este metodo consigo obtener el hermano, es decir un elemento que esté en la misma jerarquía o nivel desde el elemento desde el que se llama al metodo, en este caso es un <ul>
+    const numeroProvinvias = hermano.children.length; //Con esto obtengo el numero total de <li> que tiene este ul, aunque realmente este metodo (realmente no se si es un metodo o una propiedad del objeto tipo elemento) ".children.length" te saca el número de elementos hijos que cuelgan de ese elemento padre desde el que se llama.
+
+    texto += ", y esta CCAA tiene un total de " + numeroProvinvias + " provincias.";
+    return texto;
 }
